@@ -2,7 +2,7 @@ title: Buffer Overthought
 author: Joao Pedro Nascimento Monteiro
 email: joaonasmont@gmail.com
 description: >
-  A technical devlog covering systems, engineering, security, and IoT.
+  A technical devlog covering systems, engineering, security, and IoT. Join this humble dev as I document my projects, break things, get frustrated, eventually (hopefully) ship something and share what I learn along the way!
 
 # 1. URL must be lowercase for GitHub Pages to link CSS correctly
 url: "https://joaonasmonteiro.github.io"
@@ -14,7 +14,6 @@ permalink: /blog/:title/
 
 # 3. Build Settings
 markdown: kramdown
-highlighter: none
 
 
 plugins:

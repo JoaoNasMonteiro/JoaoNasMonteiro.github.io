@@ -1,124 +1,107 @@
 ---
 ---
 
-// 1. Definir as variáveis do Srcery
-$srcery-black:       #1C1B19;
-$srcery-white:       #FCE8C3;
-$srcery-bright-white:#f1f1f1;
-$srcery-orange:      #FF8756;
-$srcery-red:         #EF2F27;
-$srcery-yellow:      #FBB829;
-$srcery-green:       #519F50;
-$srcery-blue:        #2C78BF;
-$srcery-code-bg:     #2D2C29;
+/* 1. Paleta Srcery Completa */
+$srcery-bg:       #1C1B19; /* Fundo Preto */
+$srcery-fg:       #FCE8C3; /* Texto Bege */
+$srcery-bright:   #f1f1f1; /* Branco/Claro */
 
-// 2. Sobrescrever as variáveis do tema Minima
-$brand-color:        $srcery-orange;
-$brand-color-light:  lighten($srcery-orange, 15%);
-$brand-color-dark:   darken($srcery-orange, 15%);
+/* Cores de destaque */
+$srcery-red:      #EF2F27; /* Keywords, Erros */
+$srcery-orange:   #FF8756; /* Links, Constantes */
+$srcery-yellow:   #FBB829; /* Classes, Funções */
+$srcery-green:    #519F50; /* Strings */
+$srcery-cyan:     #0AAEB3; /* Símbolos, Regex */
+$srcery-blue:     #2C78BF; /* Variáveis */
+$srcery-magenta:  #E02C6D; /* Números, Built-ins */
 
-$text-color:         $srcery-white;
-$background-color:   $srcery-black;
-$code-background-color: $srcery-code-bg;
+/* Cores neutras */
+$srcery-gray:     #918175; /* Comentários */
+$srcery-dark-gray:#2D2C29; /* Fundo de Código/Bordas */
 
-$link-base-color:    $srcery-orange;
-$link-visited-color: darken($srcery-orange, 10%);
-$link-hover-color:   $srcery-yellow;
+/* 2. Override das Variáveis do Minima (Antes do import) */
+$text-color:       $srcery-fg;
+$background-color: $srcery-bg;
+$brand-color:      $srcery-orange;
+$grey-color:       $srcery-gray;
+$grey-color-light: $srcery-dark-gray;
+$code-background-color: $srcery-dark-gray;
 
-// 3. Importar o tema original depois das definições
+/* 3. Importar o Minima */
 @import "minima";
 
-// 4. Ajustes finos extras (CSS Puro)
-body {
-  color: $text-color;
-  background-color: $background-color;
+/* 4. Estilos do Rodapé (Manter o que já funcionava) */
+.site-footer {
+    border-top: 1px solid $srcery-dark-gray;
+    background-color: #121212; 
+    color: $srcery-gray;
+}
+.site-footer a {
+    color: $srcery-orange !important;
 }
 
-// Ajuste para blocos de código (pre e code)
-pre, code {
-  background-color: $srcery-code-bg;
-  color: $srcery-white;
-  border: 1px solid #333;
+/* ======================================================
+   5. CUSTOMIZAÇÃO DOS BLOCOS DE CÓDIGO (Rouge Syntax)
+   ====================================================== */
+
+/* Fundo geral do bloco de código */
+.highlighter-rouge .highlight {
+    background-color: $srcery-dark-gray !important;
+    color: $srcery-fg;
+    border-radius: 5px;
+    border: 1px solid #333;
 }
 
-// Ajuste para o cabeçalho
-.site-header {
-  border-top: 5px solid $srcery-orange;
-  border-bottom: 1px solid #333;
-  background-color: #121212; // Um pouco mais escuro para contraste
+/* Ajuste para código inline (aquele com crases `assim`) */
+code.highlighter-rouge {
+    background-color: $srcery-dark-gray;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: $srcery-yellow; /* Destaque amarelo para inline */
 }
 
-.site-title, .site-title:visited {
-  color: $srcery-orange;
+/* --- Cores Específicas da Sintaxe --- */
+
+/* Comentários (Cinza) */
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs { 
+    color: $srcery-gray; 
+    font-style: italic;
 }
 
-// Aplicar JetBrains Mono em todo o site
-body, h1, h2, h3, h4, h5, h6, p, li, a {
-  font-family: 'JetBrains Mono', monospace !important;
+/* Palavras-chave / Keywords (Vermelho/Laranja) e.g. if, else, def */
+.highlight .k, .highlight .kp, .highlight .kv, .highlight .kd { 
+    color: $srcery-red; 
+    font-weight: bold;
 }
 
-// Opcional: Ajustar o tamanho da fonte base, pois fontes mono costumam ser menores visualmente
-body {
-  font-size: 16px; 
+/* Strings (Verde) e.g. "Texto" */
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 { 
+    color: $srcery-green; 
 }
 
-/* --- SRCERY SYNTAX HIGHLIGHTING --- */
-
-// Fundo do bloco de código
-pre code.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 1em;
-  background: #1C1B19; // Srcery Black
-  color: #FCE8C3;      // Srcery White
-  border: 1px solid #333;
-  border-radius: 4px;
+/* Funções e Classes (Amarelo) */
+.highlight .nf, .highlight .nc, .highlight .na { 
+    color: $srcery-yellow; 
 }
 
-// Palavras-chave (def, function, if, return) -> Magenta ou Laranja
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-section,
-.hljs-link {
-  color: #EF2F27; // Srcery Red (pode trocar por #FF8756 Laranja se preferir)
+/* Variáveis e Atributos (Azul) */
+.highlight .nv, .highlight .nb, .highlight .bp { 
+    color: $srcery-blue; 
 }
 
-// Funções e Títulos -> Azul
-.hljs-function,
-.hljs-title,
-.hljs-name {
-  color: #2C78BF; // Srcery Blue
+/* Números e Operadores (Magenta/Ciano) */
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo { 
+    color: $srcery-magenta; 
+}
+.highlight .o, .highlight .ow { 
+    color: $srcery-cyan; 
 }
 
-// Strings e Atributos -> Verde
-.hljs-string,
-.hljs-attr,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #519F50; // Srcery Green
+/* Tags HTML/XML (Vermelho) */
+.highlight .nt {
+    color: $srcery-red;
 }
-
-// Variáveis e Parâmetros -> Branco/Creme
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag {
-  color: #FCE8C3; 
-}
-
-// Comentários -> Cinza
-.hljs-comment,
-.hljs-quote,
-.hljs-meta {
-  color: #918175; // Srcery Grey (Xerox)
-  font-style: italic;
-}
-
-// Tipos e Classes -> Amarelo
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-number {
-  color: #FBB829; // Srcery Yellow
+/* Atributos HTML (Laranja) */
+.highlight .na {
+    color: $srcery-orange;
 }
