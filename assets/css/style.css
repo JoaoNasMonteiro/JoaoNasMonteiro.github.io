@@ -1,0 +1,53 @@
+---
+---
+
+// 1. Definir as variáveis do Srcery
+$srcery-black:       #1C1B19;
+$srcery-white:       #FCE8C3;
+$srcery-bright-white:#f1f1f1;
+$srcery-orange:      #FF8756;
+$srcery-red:         #EF2F27;
+$srcery-yellow:      #FBB829;
+$srcery-green:       #519F50;
+$srcery-blue:        #2C78BF;
+$srcery-code-bg:     #2D2C29;
+
+// 2. Sobrescrever as variáveis do tema Minima
+$brand-color:        $srcery-orange;
+$brand-color-light:  lighten($srcery-orange, 15%);
+$brand-color-dark:   darken($srcery-orange, 15%);
+
+$text-color:         $srcery-white;
+$background-color:   $srcery-black;
+$code-background-color: $srcery-code-bg;
+
+$link-base-color:    $srcery-orange;
+$link-visited-color: darken($srcery-orange, 10%);
+$link-hover-color:   $srcery-yellow;
+
+// 3. Importar o tema original depois das definições
+@import "minima";
+
+// 4. Ajustes finos extras (CSS Puro)
+body {
+  color: $text-color;
+  background-color: $background-color;
+}
+
+// Ajuste para blocos de código (pre e code)
+pre, code {
+  background-color: $srcery-code-bg;
+  color: $srcery-white;
+  border: 1px solid #333;
+}
+
+// Ajuste para o cabeçalho
+.site-header {
+  border-top: 5px solid $srcery-orange;
+  border-bottom: 1px solid #333;
+  background-color: #121212; // Um pouco mais escuro para contraste
+}
+
+.site-title, .site-title:visited {
+  color: $srcery-orange;
+}
