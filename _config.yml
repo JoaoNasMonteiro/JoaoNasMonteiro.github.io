@@ -9,7 +9,7 @@ url: "https://joaonasmonteiro.github.io"
 baseurl: ""
 
 # 2. Theme Settings
-remote_theme: "mmistakes/minimal-mistakes"
+theme: "minima"
 permalink: /blog/:title/
 
 # 3. Build Settings

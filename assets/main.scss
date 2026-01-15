@@ -1,0 +1,47 @@
+---
+# O front matter (os traços) é obrigatório aqui
+---
+
+/* 1. Paleta Srcery (Definições Originais) */
+$srcery-bg:       #1C1B19; /* Fundo Escuro */
+$srcery-fg:       #FCE8C3; /* Texto Bege Claro */
+$srcery-orange:   #FF8756; /* Laranja (Links) */
+$srcery-yellow:   #FBB829; /* Amarelo (Destaques) */
+$srcery-gray:     #918175; /* Cinza (Comentários/Datas) */
+$srcery-dark-gray:#2D2C29; /* Cinza Escuro (Códigos/Bordas) */
+
+/* 2. Override das Variáveis do Minima */
+/* IMPORTANTE: Isso deve vir ANTES do import */
+
+$text-color:       $srcery-fg;
+$background-color: $srcery-bg;
+$brand-color:      $srcery-orange; /* Cor principal dos links */
+$grey-color:       $srcery-gray;   /* Texto secundário */
+$grey-color-light: $srcery-dark-gray; /* Bordas e linhas */
+
+/* Ajuste para tabelas e códigos ficarem legíveis */
+$code-background-color: $srcery-dark-gray; 
+
+/* 3. Importar o Tema Minima */
+@import "minima";
+
+/* 4. Ajustes Finais (Depois do Import) */
+
+/* Forçar o rodapé a ter contraste */
+.site-footer {
+    border-top: 1px solid $srcery-yellow; /* Uma linha amarela fina para separar */
+    background-color: #121212; /* Um pouco mais escuro que o fundo normal */
+    color: $srcery-yellow; /* Texto amarelo no rodapé */
+}
+
+/* Links do rodapé */
+.site-footer a {
+    color: $srcery-orange !important;
+}
+
+/* Ajuste nos blocos de código para ficarem bonitos no estilo Srcery */
+pre, code {
+    border-radius: 4px;
+    background-color: $srcery-dark-gray;
+    border: 1px solid #333;
+}
