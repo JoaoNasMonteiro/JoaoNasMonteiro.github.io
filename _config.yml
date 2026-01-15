@@ -21,9 +21,6 @@ collections:
   projects:
     output: true  
     permalink: /projects/:path/ 
-  articles:
-    output: true
-    permalink: /articles/:path/
 
 github_username: JoaoNasMont
 
