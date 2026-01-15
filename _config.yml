@@ -14,6 +14,11 @@ permalink: /blog/:title/
 
 # 3. Build Settings
 markdown: kramdown
+kramdown:
+  math_engine: mathjax 
+
+
+github_username: JoaoNasMont
 
 
 plugins:
