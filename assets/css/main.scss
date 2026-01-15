@@ -34,7 +34,7 @@ $sidebar-background-color: $base00;
 @import "minimal-mistakes";
 
 
-/*
+
 footer {
     
     background-color: $background-color !important; 
@@ -42,4 +42,9 @@ footer {
     color: $text-color; 
 }
 
-*/
+.page__footer a,
+.page__footer a:visited {
+    color: $text-color !important; 
+    text-decoration: underline;
+}
+

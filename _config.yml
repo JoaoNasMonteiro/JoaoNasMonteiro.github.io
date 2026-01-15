@@ -7,7 +7,7 @@ description: >
 remote_theme: mmistakes/minimal-mistakes
 
 baseurl: "" 
-url: "https://yourusername.github.io"
+url: "https://JoaoNasMonteiro.github.io"
 permalink: /blog/:title/
 
 github_username: JoaoNasMont
