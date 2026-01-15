@@ -32,3 +32,11 @@ $sidebar-background-color: $base00;
 
 // 3. Importar o tema principal
 @import "minimal-mistakes";
+
+footer {
+    /* Force the background to stay dark, even in light mode */
+    background-color: $background-color !important; 
+    
+    /* Ensure text stays yellow */
+    color: $text-color; 
+}
