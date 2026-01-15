@@ -167,3 +167,86 @@ pre code {
     border: none;
     background-color: transparent !important;
 }
+
+/* ======================================================
+   9. ESTILO DA PÁGINA DE PROJETOS (CARDS)
+   ====================================================== */
+
+/* O Container da Grade */
+.projects-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 coluna em celular */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Em telas maiores, usa 2 colunas */
+@media (min-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* O Cartão do Projeto */
+.project-card {
+    display: block;
+    background-color: $srcery-dark-gray; /* Fundo do card */
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s, border-color 0.2s;
+    text-decoration: none !important; /* Remove sublinhado geral */
+}
+
+/* Efeito Hover no Card */
+.project-card:hover {
+    border-color: $srcery-orange; /* Borda laranja ao passar o mouse */
+    transform: translateY(-3px); /* Leve subida */
+}
+
+/* Título do Projeto */
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: $srcery-yellow; /* Título amarelo */
+    font-size: 1.2rem;
+}
+
+/* Descrição */
+.project-desc {
+    color: $srcery-fg;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Tags de Tecnologia (Python, C++, etc) */
+.tech-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    background-color: #1C1B19; /* Fundo mais escuro que o card */
+    color: $srcery-blue; /* Texto Azul */
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    border: 1px solid #333;
+}
+
+/* Badge de Status (Em Andamento / Concluído) */
+.project-status {
+    float: right;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Cores dinâmicas para o status */
+.project-status.em-andamento {
+    color: $srcery-orange;
+    border: 1px solid $srcery-orange;
+}
+.project-status.concluido {
+    color: $srcery-green;
+    border: 1px solid $srcery-green;
+}
