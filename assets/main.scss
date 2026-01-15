@@ -14,6 +14,7 @@ $srcery-green:    #519F50; /* Strings */
 $srcery-cyan:     #0AAEB3; /* Símbolos, Regex */
 $srcery-blue:     #2C78BF; /* Variáveis */
 $srcery-magenta:  #E02C6D; /* Números, Built-ins */
+$orange-pop:      #FF5F00; /*headers e footers*/
 
 /* Cores neutras */
 $srcery-gray:     #918175; /* Comentários */
@@ -43,7 +44,22 @@ body {
 }
 
 .site-title, .site-title:visited {
-  color: $srcery-orange
+  color: $orange-pop;
+}
+
+.site-title:hover {
+    color: $srcery-yellow !important; /* Título brilha em amarelo no hover */
+    text-decoration: none; /* Título geralmente não deve ter sublinhado */
+    cursor: pointer;
+}
+
+.pagination .previous, 
+.pagination .next {
+    color: $srcery-orange !important;
+}
+.pagination .previous:hover, 
+.pagination .next:hover {
+    color: $srcery-yellow !important;
 }
 
 /* 4. Estilos do Rodapé (Manter o que já funcionava) */
@@ -53,8 +69,24 @@ body {
     color: $srcery-gray;
 }
 .site-footer a {
-    color: $srcery-orange !important;
+    color: $orange-pop !important;
 }
+
+a {
+    color: $srcery-orange !important; /* Laranja vibrante */
+    text-decoration: none; /* Remove o sublinhado padrão (fica mais limpo) */
+}
+
+/* Link quando passa o mouse (Hover) */
+a:hover {
+    color: $srcery-yellow !important; /* Vira amarelo para dar feedback visual */
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+a:visited {
+    color: $srcery-red; /* Mantém laranja, mas você pode por outra cor se quiser */
+}
+
 
 /* ======================================================
    5. CUSTOMIZAÇÃO DOS BLOCOS DE CÓDIGO (Rouge Syntax)
