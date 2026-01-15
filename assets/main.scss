@@ -30,6 +30,22 @@ $code-background-color: $srcery-dark-gray;
 /* 3. Importar o Minima */
 @import "minima";
 
+body {
+  color: $text-color;
+  background-color: $background-color;
+}
+
+
+.site-header {
+  border-top: 5px solid $srcery-orange;
+  border-bottom: 1px solid #333;
+  background-color: #121212; // Um pouco mais escuro para contraste
+}
+
+.site-title, .site-title:visited {
+  color: $srcery-orange;
+}
+
 /* 4. Estilos do Rodapé (Manter o que já funcionava) */
 .site-footer {
     border-top: 1px solid $srcery-dark-gray;
@@ -104,4 +120,18 @@ code.highlighter-rouge {
 /* Atributos HTML (Laranja) */
 .highlight .na {
     color: $srcery-orange;
+}
+
+code {
+    background-color: $srcery-dark-gray !important; /* Fundo escuro */
+    color: $srcery-yellow !important; /* Texto amarelo para destacar do texto normal */
+    border: 1px solid #333; /* Borda sutil */
+    padding: 2px 4px; /* Espacinho interno */
+    border-radius: 3px;
+}
+
+/* Garante que o bloco de código grande não herde a borda errada */
+pre code {
+    border: none;
+    background-color: transparent !important;
 }
