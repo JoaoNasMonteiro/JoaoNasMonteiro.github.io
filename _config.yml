@@ -6,13 +6,17 @@ description: >
 
 remote_theme: mmistakes/minimal-mistakes
 
+baseurl: "" 
+url: "https://yourusername.github.io"
 permalink: /blog/:title/
+
+github_username: JoaoNasMont
 
 markdown: kramdown
 kramdown:
   input: GFM  
   math_engine: mathjax 
-  syntax_highlighter: rouge 
+syntax_highlighter: none
 
 #header_pages:
   #- about.md
