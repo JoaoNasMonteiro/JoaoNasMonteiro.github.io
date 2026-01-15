@@ -51,3 +51,74 @@ pre, code {
 .site-title, .site-title:visited {
   color: $srcery-orange;
 }
+
+// Aplicar JetBrains Mono em todo o site
+body, h1, h2, h3, h4, h5, h6, p, li, a {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+// Opcional: Ajustar o tamanho da fonte base, pois fontes mono costumam ser menores visualmente
+body {
+  font-size: 16px; 
+}
+
+/* --- SRCERY SYNTAX HIGHLIGHTING --- */
+
+// Fundo do bloco de código
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  background: #1C1B19; // Srcery Black
+  color: #FCE8C3;      // Srcery White
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+// Palavras-chave (def, function, if, return) -> Magenta ou Laranja
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #EF2F27; // Srcery Red (pode trocar por #FF8756 Laranja se preferir)
+}
+
+// Funções e Títulos -> Azul
+.hljs-function,
+.hljs-title,
+.hljs-name {
+  color: #2C78BF; // Srcery Blue
+}
+
+// Strings e Atributos -> Verde
+.hljs-string,
+.hljs-attr,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #519F50; // Srcery Green
+}
+
+// Variáveis e Parâmetros -> Branco/Creme
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag {
+  color: #FCE8C3; 
+}
+
+// Comentários -> Cinza
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+  color: #918175; // Srcery Grey (Xerox)
+  font-style: italic;
+}
+
+// Tipos e Classes -> Amarelo
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-number {
+  color: #FBB829; // Srcery Yellow
+}
