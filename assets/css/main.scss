@@ -1,52 +1,34 @@
 ---
-# Only the main Sass file needs front matter (the dashes)
 ---
 
-/* 1. Srcery Color Definitions */
-$base00: #1C1B19; // Page Background
-$base01: #2D2C29; // Code Background
-$base02: #333333;
-$base03: #918175; // Comments
-$base04: #FCE8C3; // Text (Beige)
-$base05: #FCE8C3;
-$base06: #f1f1f1;
-$base07: #f1f1f1;
-$base08: #EF2F27; // Red
-$base09: #FF8756; // Orange (Primary Link/Accent)
-$base0a: #FBB829; // Yellow
-$base0b: #519F50; // Green
-$base0c: #0AAEB3; // Cyan
-$base0d: #2C78BF; // Blue
-$base0e: #E02C6D; // Magenta
-$base0f: #d0d0d0;
+/* 1. Define your Custom Colors first */
+$base-dark: #222222;
+$base-yellow: #FFFF00;
+$base-orange: #FF8756;
 
-/* 2. Override Minimal Mistakes Variables */
-$primary-color:       $base09; 
-$text-color:          $base04;
-$background-color:    $base00;
-$code-background-color: $base01;
-$masthead-link-color: $base09;
-$masthead-link-color-hover: $base0a;
-$sidebar-background-color: $base00;
-$footer-background-color: $base00; 
+/* 2. Override Theme Variables */
+/* These must be set BEFORE the import */
+$footer-background-color: $base-dark;
+$footer-caption-color: $base-yellow;
 
-
+/* 3. Import the Theme */
 @import "minimal-mistakes";
 
-
-
+/* 4. Force Footer Styles (The "Hammer" approach) */
 .page__footer {
-    background-color: $base00 !important; /* Dark Background */
-    color: $base0a !important; /* Force text to Yellow ($base0a) instead of Beige */
+  background-color: $base-dark !important;
+  color: $base-yellow !important;
 }
 
-.page__footer .archive__item-excerpt {
-    color: $base0a !important;
+/* Force specific elements inside the footer to match */
+.page__footer .archive__item-excerpt,
+.page__footer .page__sub-title {
+  color: $base-yellow !important;
 }
 
-
-.page__footer a,
+/* Force Link Colors */
+.page__footer a, 
 .page__footer a:visited {
-    color: $base09 !important; 
-    text-decoration: underline;
+  color: $base-orange !important;
+  text-decoration: underline;
 }

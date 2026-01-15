@@ -2,26 +2,18 @@ title: Buffer Overthought
 author: Joao Pedro Nascimento Monteiro
 email: joaonasmont@gmail.com
 description: >
-  A technical devlog covering systems, engineering, security, and IoT. Join this humble Silicon Wrangler and bit Plumber as I document my projects, break things, get frustrated, eventually ship something and share what I learn along the way!  
+  A technical devlog covering systems, engineering, security, and IoT.
 
-remote_theme: mmistakes/minimal-mistakes
-
-baseurl: "" 
+# 1. URL must be lowercase for GitHub Pages to link CSS correctly
 url: "https://joaonasmonteiro.github.io"
+baseurl: ""
+
+# 2. Theme Settings
+remote_theme: "mmistakes/minimal-mistakes"
 permalink: /blog/:title/
 
-github_username: JoaoNasMont
-
+# 3. Build Settings
 markdown: kramdown
-kramdown:
-  input: GFM  
-  math_engine: mathjax 
-syntax_highlighter: none
-
-#header_pages:
-  #- about.md
-  #- projects.md
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
