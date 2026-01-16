@@ -250,3 +250,62 @@ pre code {
     color: $srcery-green;
     border: 1px solid $srcery-green;
 }
+
+/* ======================================================
+   10. ESTILO DOS BACKLINKS (Obsidian Style)
+   ====================================================== */
+
+/* O Card no topo do Post (Link para o Projeto) */
+.project-callout {
+    background-color: $srcery-dark-gray;
+    border-left: 4px solid $srcery-orange; /* Laranja Srcery */
+    padding: 10px 15px;
+    margin-bottom: 25px;
+    border-radius: 0 4px 4px 0;
+    font-family: monospace; /* Fonte mono para parecer log */
+}
+
+.callout-icon {
+    color: $srcery-gray;
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+
+.project-link {
+    color: $srcery-yellow !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+.project-link:hover {
+    text-decoration: underline;
+    color: $srcery-orange !important;
+}
+
+/* A Lista de Backlinks na página do Projeto */
+.backlink-list {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+.backlink-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: baseline;
+}
+
+.backlink-date {
+    color: $srcery-gray;
+    font-family: monospace;
+    font-size: 0.85em;
+    margin-right: 15px;
+    min-width: 90px;
+}
+
+.backlink-link {
+    color: $srcery-fg !important; /* Texto claro */
+}
+.backlink-link:hover {
+    color: $srcery-yellow !important;
+}

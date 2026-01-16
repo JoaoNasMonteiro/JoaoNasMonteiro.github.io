@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    <div class="project-meta">
+        {% if page.status %}
+        <span class="project-status {{ page.status | slugify }}">{{ page.status }}</span>
+        {% endif %}
+    </div>
+  </header>
+
+  <div class="post-content">
+    
+    {{ content }}
+
+    <hr style="border-top: 1px dashed #333; margin: 40px 0;">
+
+    <div class="project-backlinks">
+      <h3 style="color: #FBB829;">📂 DevLogs deste Projeto</h3>
+      
+      {% assign project_slug = page.slug %}
+      {% assign updates = site.posts | where: "project", project_slug %}
+
+      {% if updates.size > 0 %}
+        <ul class="backlink-list">
+          {% for post in updates %}
+            <li class="backlink-item">
+              <span class="backlink-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+              <a href="{{ post.url | relative_url }}" class="backlink-link">
+                 {{ post.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p style="font-style: italic; color: #666;">Nenhum devlog registrado para este projeto ainda.</p>
+      {% endif %}
+    </div>
+
+  </div>
+
+</article>
