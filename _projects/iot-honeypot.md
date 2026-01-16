@@ -6,6 +6,7 @@ date: 2026-01-15
 status: "Ongoing" 
 tech_stack: [C, Python, MQTT, orange PI]
 repo_url: "to-be-added"
+slug: iot-honeypot   
 ---
 
 # To-Be-Finished

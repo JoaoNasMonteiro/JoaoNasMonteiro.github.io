@@ -4,6 +4,7 @@ title:  "Hello World: Setting up my Devlog"
 date:   2026-01-15 12:00:00 -0300
 categories: [setup, meta]
 tags: [github, jekyll]
+project: iot-honeypot
 ---
 
 ## Welcome to my blog
