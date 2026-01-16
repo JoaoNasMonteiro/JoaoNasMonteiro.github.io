@@ -20,7 +20,7 @@ kramdown:
 collections:
   projects:
     output: true  
-    permalink: /projects/:path/ 
+    permalink: /projects/:path/
 
 github_username: JoaoNasMont
 
