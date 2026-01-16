@@ -20,7 +20,7 @@ layout: default
     <hr style="border-top: 1px dashed #333; margin: 40px 0;">
 
     <div class="project-backlinks">
-      <h3 style="color: #FBB829;">📂 DevLogs deste Projeto</h3>
+      <h3 style="color: #FBB829;">📂 Related to this project:</h3>
       
       {% assign project_slug = page.slug %}
       {% assign updates = site.posts | where: "project", project_slug %}
@@ -37,7 +37,7 @@ layout: default
           {% endfor %}
         </ul>
       {% else %}
-        <p style="font-style: italic; color: #666;">Nenhum devlog registrado para este projeto ainda.</p>
+        <p style="font-style: italic; color: #666;">Nothing to see here...yet...</p>
       {% endif %}
     </div>
 
