@@ -9,7 +9,6 @@ repo_url: "https://github.com/JoaoNasMonteiro/Orange-Sentry"
 slug: iot-honeypot   
 ---
 
-# Orange Sentry IoT Honeypot
 > **Status:** Pre-Alpha | Milestone 0
 
 Welcome to the home of the **Orange Sentry** project!
