@@ -1,75 +1,92 @@
 ---
 layout: project_page
-title: "IoT Honeypot"
-description: "An IoT Honeypot device built around an Orange Pi Zero 3 2GB leveraging open source honeypots like Cowrie to catch threat actors on networks."
-date: 2026-01-15
-status: "Ongoing" 
-tech_stack: [C, Python, MQTT, orange PI]
-repo_url: "to-be-added"
+title: "Orange Sentry IoT Honeypot"
+description: "A portable IoT Honeypot & NIDS built on the Orange Pi Zero 3, leveraging Cowrie and Suricata to detect network threats."
+date: 2026-01-20
+status: "Pre-Alpha" 
+tech_stack: [C, Python, MQTT, Embedded Linux]
+repo_url: "https://github.com/JoaoNasMonteiro/Orange-Sentry"
 slug: iot-honeypot   
 ---
 
 # Orange Sentry IoT Honeypot
-> Status: Pre-Alpha
+> **Status:** Pre-Alpha | Milestone 0
 
-Welcome to the home of the *Orange SentryI IoT Honeypot project!
+Welcome to the home of the **Orange Sentry** project!
 
-Orange Sentry is an embedded honeypot and IDS system based around the Orange Pi Zero 3 2GB. It leverages OSS tools such as Cowrie and Suricata for a robust detection engine and some of my own code to package it all together into a cheap but powerful detection device for people interested insecurity such as researchers, students, hobbyists and practitioners.
+Orange Sentry is a portable, hardware-controlled, embedded honeypot and IDS system based on the Orange Pi Zero 3 (2GB) Single Board Computer.
 
-My objectives with this project are to learn "full-stack" IoT engineering (meaning hardware, firmware, applications, connectivity and security) by doing. This is certainly an ambitious project, but I hope the sheer vastness of the technology that I will need to learn to use and configure to get even an MVP of this project up and running will keep me motivated.
+It uses battle-tested open-source tools like **Cowrie** and **Suricata** for a robust detection engine, orchestrated by a custom **Control Plane** written in C. The goal is to package high-level network intrusion detection into a cheap, low-power, and tactile device for security students, researchers, practitioners, and overall security nerds like me.
 
-## Current status
-The project is currently in the **Pre-Alpha** state.
+## The Objective: Bridging the Gap
+This project exists to bridge the gap between **High-Level Threat Analysis** and **Low-Level Hardware Constraints**.
 
-The board has been acquired and configured.
-The Cowrie service has been installed and configured to listen to SSH and TELNET traffic, as well as to be managed by a systemd service.
+While this is primarily a "learn-by-doing" project to help me become a better full-stack IoT Engineer—mastering the Hardware, Firmware, Application, Connectivity, and Security domains—my plan is to ship a genuinely cool, functional product by the end.
 
-My next steps will be to implement the core controller's business logic.
+## Architecture & Technical Minutia
+The Orange Sentry works as a physical system with two distinct planes of operation: the *Enforcement Plane* and the *Control Plane*. 
 
-## Tech Stack (Abridged)
-The product is built around an Orange Pi Zero 3 2Gb board, and is designed primarily around a small OLED display and some buttons on the case. This will allow the user to switch between different modes, which will give different functionality to the board: closed, passive listen, honeypot, and development.
+### 1. The Enforcement Plane
+This layer handles the heavy lifting of network traffic, security, connectivity, and detection.
+* **OS:** DietPi (Armbian based) optimized for minimal footprint.
+* **The Detection:** Runs **Cowrie**, a medium-interaction SSH/Telnet Honeypot, and **Suricata**, a Network-based Intrusion Detection System (NIDS).
+* **Hardware Interaction:** Tools and scripts for controlling the physical board, such as thermal management (fan control) written in C and the display server written in Python.
+* **Connectivity:** A lightweight MQTT client based on **Eclipse Paho** that sends telemetry and receives commands from an authenticated broker.
 
-Overall this project will help me learn about and get hands on practice with some very cool technologies, such as:
-C, Python, MQTT, Embedded Linux, Hardware Drivers, I2C, Software Architecture, and others.
+### 2. The Control Plane
+This is the custom embedded logic that acts as the "brain" of the board. These tools orchestrate the Enforcement Layer based on the device's state.
+* **FSM (Finite State Machine):** Written in C, it manages the logic of the device and toggles functionalities based on the current mode.
+* **MQTT Controller:** A service to handle identity, authenticate the broker, and execute commands received via the network.
 
-I also have some other stuff planned, such as a GOLANG webapp to allow remote control and observability leveraging MQTT and a correlation engine like Wazuh to correlate logs from many Orange Sentry devices at the same time, but meanwhile I am focusing on developing the best board I can while I learn along the way.
-
-## Technical Minutia
-
-### The Hardware
+### 3. The Hardware
 * **Core:** Orange Pi Zero 3 (2GB RAM) running DietPi.
 * **Storage:** 64 GB SanDisk SD card.
 * **Interface:** Integrated case with 3 push buttons (Up, Down, Select) and an OLED I2C display.
-* **Thermal Management:** A custom-managed fan and heatsink assembly. I plan to write a small daemon to monitor thermal zones and trigger the fan only when approaching the upper bound of the optimal range.
+* **Thermal Management:** A custom fan and heatsink assembly. I am writing a small daemon to monitor thermal zones and trigger the fan only when approaching the upper bound of the optimal range.
 
-### The Software Stack
-I am prioritizing learning lower-level concepts. While I am not reinventing the wheel for complex detection engines (using off-the-shelf Cowrie and Suricata), I am writing my own tooling for the embedded logic.
-
-* **Languages:** Python (for prototyping/display server) and C (for drivers/performance).
-* **Protocols:** MQTT for remote control and observability.
-* **Planned Tooling:** Custom drivers for button management, a port-control service, and secure IPC (Inter-Process Communication).
-
-### Operational Modes
-The device logic is based on a Finite State Machine controlled via the physical buttons or MQTT commands.
+## Operational Modes
+The device logic is based on a Finite State Machine controlled via physical buttons or authenticated MQTT commands.
 
 | Mode | Description |
 | :--- | :--- |
-| **Closed Mode** | All network ports are closed. Interaction is limited to the physical interface. |
-| **Passive Listen** | Opens ports but drops connection attempts, logging the traffic. Authorized control is allowed via an authenticated MQTT broker. |
-| **Honeypot** | Engages the Cowrie (SSH/Telnet) honeypot and Suricata NIDS to generate alerts. |
-| **Development** | Disengages the honeypot/IDS and allows direct legitimate SSH connections for maintenance. |
+| **🔒 Closed Mode** | All network ports are closed via Nftables. Interaction is limited to the physical interface. |
+| **👂 Passive Listen** | Opens ports but silently drops connection attempts, logging the traffic meta-data. |
+| **🍯 Honeypot** | Engages the Cowrie (SSH/Telnet) honeypot and Suricata NIDS to generate alerts and capture attacker sessions. |
+| **🛠️ Development** | Disengages the honeypot/IDS and allows direct legitimate SSH connections for maintenance. |
 
-## Design Philosophy
-I am leveraging an age-old engineering adage that I picked up from professional non-engineer engineer Martin from the [Wintergatan YouTube Channel](https://www.youtube.com/@Wintergatan):
+## Engineering Challenges
+I chose not to reinvent the wheel with the detection engines (Cowrie/Suricata), but I am building the infrastructure from scratch to solve specific engineering hurdles:
+
+1.  **The Cross-Compilation Pivot:** Migrating from compiling on-device (which is slow and wears out the SD card) to a robust cross-compilation toolchain on my x86 host.
+2.  **Deterministic Memory:** Moving away from standard `malloc/free` to **Arena Allocators** to ensure the device can run 24/7 without memory leaks.
+3.  **Secure C2:** Implementing MQTT over TLS with mutual authentication on a resource-constrained device.
+
+## Development Philosophy
+I am leveraging an age-old engineering adage that I picked up from professional "non-engineer engineering extraordinaire" Martin from the [Wintergatan YouTube Channel](https://www.youtube.com/@Wintergatan):
 
 > "If you can buy the part off-the-shelf, you don't make the part."
 
 However, I am adding a personal spin:
 > "If you can buy the part off-the-shelf, you don't make the part—**unless you want to learn how to make the part.**"
 
-I decided not to reinvent the wheel with the honeypots (I want to eventually ship this thing), so I am utilizing technologies built by people much smarter than me. My focus is on optimizing these tools to run comfortably on the tight 2GB RAM constraint while maintaining compatibility with upstream sources.
+My focus is on optimizing existing tools to run comfortably on the tight 2GB RAM constraint while maintaining compatibility with upstream sources. But, I also reserve the right to build my own tooling whenever I want to deeply understand how something works under the hood.
 
-## Future Roadmap
-* **Webapp:** A Go (Golang) web application for remote control and observability.
-* **Fleet Management:** Integration with a correlation engine like **Wazuh** to aggregate logs from multiple Orange Sentry devices.
-* **Optimization:** Migrating Python prototypes to C as the project matures.
+## Roadmap
+I am following a "Vertical Slice" development strategy, ensuring functional deliverables at every stage.
+
+### Milestone 0: Pre-Alpha (Infrastructure)
+- [x] **MVP 0:** Initial Setup (DietPi, Cowrie Service, Control Plane Stub).
+- [ ] **MVP 1:** Hardware Interaction (Physical Buttons & LED Feedback).
+- [ ] **MVP 1.5:** Cross-Compilation Toolchain & Build System.
+- [ ] **MVP 2:** Control Plane Connectivity (MQTT Client).
+- [ ] **MVP 3:** Security Hardening (TLS for MQTT).
+- [ ] **MVP 4:** FSM Orchestration (Linking Hardware Inputs to System State).
+
+### Milestone 1: Alpha (Device Reliability)
+*Focus: Local Persistence, Hardware Watchdog, Thermal Management, and Crash Recovery.*
+
+### Milestone 2: Beta (Ecosystem)
+*Focus: Webapp Backend, Fleet Management (IaC), and Auto-Enrollment.*
+
+---
+*Built with ☕ and `segfaults` by [JoaoNasMont](https://github.com/JoaoNasMont).*
