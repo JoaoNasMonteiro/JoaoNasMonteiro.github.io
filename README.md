@@ -1,5 +1,5 @@
-## here Systems Engineering meets Security Research.
-Welcome to my digital workbench.
+>here Systems Engineering meets Security Research.
+Welcome to my digital workbench!
 
 I am Joao Pedro N. Monteiro, a Cybersecurity Analyst and Computer Engineering student based in Salvador, Bahia, Brazil. I have a background in Sysadmin, Linux, Malware Analysis and GRC (Governance, Risk and Compliance), but my true passion is in uncovering and undertanding how the systems we as security practitioners protect - servers, databases, endpoints and IoT devices- truçy work under the hood, and their security implications.
 
