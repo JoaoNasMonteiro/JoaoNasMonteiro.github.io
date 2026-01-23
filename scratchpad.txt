@@ -1,0 +1,41 @@
+hardware specs
+	orange pi zero 3 2gb rodando linux embarcado (dietpi baseado em armbian)
+	case integrada com 3 push buttons (up down select), mini display OLED I2C e fan.
+	controle dos botões e oled via i2c
+		Display server escrito em python que recebe o texto e renderiza os comandos necessários e envia para o OLED via i2c(escolhi python inicialmente para simplificar um pouco. depois se eu me sentir confiante posso escolher escrever em C)
+		Pequena aplicação (inicialmente em user space, depois pode se tornar um driver em kernel space) que lê os botões via I2C
+	sistema de controle da fan baseada na temperatura da CPU escrito em c
+Embedded business logic:
+	Baseada em uma "máquina de estados", com cada estado representando um modo de operação. os estados são os seguintes:
+		Closed: todas as portas de rede fechadas, gerenciamento realizado somente através dos botões e do display oled. Eventualmente também poderá ser configurado via mqtt de forma autorizada e segura, mas até agora não.
+		Development: Portas de rede fechadas, exceto a porta de ssh, que será uma porta alta selecionada aleatóriamente. o IP e a porta serão mostradas na tela. A senha inicialmente será padrão, mas posteriormente será gerada aleatóriamente no processo de enrollment de cada dispositivo na aplicação.
+		Passive listen: abre todas as portas, mas loga toda comunicação que chega para ela e dropa as conexões.
+			Pode ser configurada ara fazer PCAP também
+		Honeypot: roda cowrie para ssh e telnet; além de rodar suricata light mode para realidazer detecção de intrusão
+	uma aplicação central escrita em C com o objetivo em mudar os modos de operação da board. Cada modo terá suas devidas aplicações/scripts que serão rodados toda vez que entrarem nele
+		Toda vez que a rede for ser mudada vai ser chamado um binário com libnftables ou netlink sockets para realizar toda a configuração da rede
+			Alternativamente posso chamar scripts bash. Provavelmente vou vomeçar assim e depois escrever esse módulo controlador de redes
+		O input dos botões será feito através de um driver de kernel
+		para o modulo passive listen posso  redrecionar a comunicação de todas as portas para uma só, escutar nesta porta com um binário escrito em C e logar desta maneira. Alternativamente posso também usar glutton pra fazer algo parecido, mas talvez a performance sofra
+		para o modo honeypot vou ativar os serviços do cowrie e do suricata, usar bash pra fazer as configurações adequadas no iptables.
+	Todos os logs serão centralizados em subdiretórios de /var/log que será configurado com dietpi-ramog, que torna /var/log um ramfs (escrevendo os logs na ram para evitar writes escessivos no sd card, podendo danifica-lo) e o apaga de hora em hora
+	O controle dos modos poderá ser feito através dos botões físicos, ssh (se no modo development) ou via aplicação web que se comunica com a board via mqtt
+	Um binário de controle remoto da board a partir da aplicação, que deve autenticar as comunicações, parsear as comunicações e enviar os comandos para o módulo controlador através de d-bus ou unix sockets.
+Conectividade
+	a aplicação se conectará via um pequeno cliente publisher e subscriber mqtt escrito em C em uma aplicação externa. esta aplicação deve ser capaz de identificar os diferentes dispositivos conectados a ela, enviar comandos de configuração e eventualmente realizar todo o setup da board a partir de ansible scripts.
+	o backend da aplicação será escrito em go, e terá um front simples (provavelmente escrito em C + Clay layout library compilado para wasm e um pouco de js. Se isso se provar muito difícil escolherei python provavelmente)
+Para otimização de tempo e criar um MVP, vou menater algumas partes mais críticas escritas em C, mas vou deixar temporáriamente coisas como configuração de firewall de host, controle do display via I2C, etc. em linguagens mais amigáveis à prototipação como python e bash. posteriormente vou escrevendo os serviços (como serviço de configuração de rede, driver I2C para o display, etc.) em c
+	O que escrever em C (Agora)
+		Controlador Central (State Machine)
+		Cliente MQTT (Core):
+		IPC (comunicação entre processos)
+	O que manter em pythonqbash por enquanto:
+		Display OLED e botões
+		configuração de redes iptables
+	Como conectar o C com o Python?
+		Para o MVP posso usar Named Pipes (FIFOs) ou Unix Domain Sockets
+			Ex: o controlador (C) precisa atualizar a tela (Python)
+				O lado do python (display server): o script abre um socket unix (ex: /tmp/display.sock) e fica ouvindo. Ele espera receber o texto simples (ou json) para escrever na tela
+				O lado C (Controlador):
+					quando o estado muda, o C formata uma estring e escreve no socket.
+
