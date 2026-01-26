@@ -43,8 +43,6 @@ This is the custom embedded logic that acts as the "brain" of the board. These t
 * **Interface:** Integrated case with 3 push buttons (Up, Down, Select) and an OLED I2C display.
 * **Thermal Management:** A custom fan and heatsink assembly. I am writing a small daemon to monitor thermal zones and trigger the fan only when approaching the upper bound of the optimal range.
 
-# TEST
-
 ## Operational Modes
 The device logic is based on a Finite State Machine controlled via physical buttons or authenticated MQTT commands.
 
