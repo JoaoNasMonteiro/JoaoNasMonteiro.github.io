@@ -22,9 +22,18 @@ collections:
     output: true  
     permalink: /projects/:path/
 
-github_username: JoaoNasMonteiro
-linkedin_username: joaonasmont
-email_address:  joaonasmont@gmail.com
+contact_links:
+  - title: Email
+    url: "mailto:joaonasmont@gmail.com"
+    icon: "fas fa-envelope"  # Icon code from FontAwesome
+
+  - title: LinkedIn
+    url: "https://www.linkedin.com/in/joaonasmonteiro/"
+    icon: "fab fa-linkedin"
+
+  - title: GitHub
+    url: "https://github.com/JoaoNasMont"
+    icon: "fab fa-github"
 
 plugins:
   - jekyll-feed
