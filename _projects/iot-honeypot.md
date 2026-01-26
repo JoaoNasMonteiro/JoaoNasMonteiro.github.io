@@ -43,6 +43,8 @@ This is the custom embedded logic that acts as the "brain" of the board. These t
 * **Interface:** Integrated case with 3 push buttons (Up, Down, Select) and an OLED I2C display.
 * **Thermal Management:** A custom fan and heatsink assembly. I am writing a small daemon to monitor thermal zones and trigger the fan only when approaching the upper bound of the optimal range.
 
+![Full Architecture Diagram](assets/images/Orange-Pi-Architecture.drawio.png)
+
 ## Operational Modes
 The device logic is based on a Finite State Machine controlled via physical buttons or authenticated MQTT commands.
 
@@ -52,6 +54,9 @@ The device logic is based on a Finite State Machine controlled via physical butt
 | **👂 Passive Listen** | Opens ports but silently drops connection attempts, logging the traffic meta-data. |
 | **🍯 Honeypot** | Engages the Cowrie (SSH/Telnet) honeypot and Suricata NIDS to generate alerts and capture attacker sessions. |
 | **🛠️ Development** | Disengages the honeypot/IDS and allows direct legitimate SSH connections for maintenance. |
+
+
+![Operational Modes of the Orange Sentry](assets/images/'Orange-Pi-Orange PI Working Modes.drawio.png')
 
 ## Engineering Challenges
 I chose not to reinvent the wheel with the detection engines (Cowrie/Suricata), but I am building the infrastructure from scratch to solve specific engineering hurdles:
@@ -88,4 +93,8 @@ I am following a "Vertical Slice" development strategy, ensuring functional deli
 *Focus: Webapp Backend, Fleet Management (IaC), and Auto-Enrollment.*
 
 ---
+<<<<<<< HEAD
 *Built with ☕ and `segfaults` by [JoaoNasMont](https://github.com/JoaoNasMont).*
+=======
+*Built with ☕ and `segfaults` by [JoaoNasMont](https://github.com/JoaoNasMont).*
+>>>>>>> 7658a3e (add images to project posts)

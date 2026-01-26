@@ -8,4 +8,8 @@ project: iot-honeypot
 ---
 # Orange Sentry IoT Honeypot
 
+<<<<<<< HEAD
+=======
 This is the init devlog for the Orange Sentry IoT Honeypot project!
+
+>>>>>>> 7658a3e (add images to project posts)
