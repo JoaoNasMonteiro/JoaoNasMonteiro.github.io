@@ -93,8 +93,10 @@ I am following a "Vertical Slice" development strategy, ensuring functional deli
 *Focus: Webapp Backend, Fleet Management (IaC), and Auto-Enrollment.*
 
 ---
+```
 <<<<<<< HEAD
-*Built with ☕ and `segfaults` by [JoaoNasMont](https://github.com/JoaoNasMont).*
+*Built with ☕ and segfaults by [JoaoNasMont](https://github.com/JoaoNasMont).*
 =======
-*Built with ☕ and `segfaults` by [JoaoNasMont](https://github.com/JoaoNasMont).*
+*Built with ☕ and segfaults and merge conflicts by [JoaoNasMont](https://github.com/JoaoNasMont).*
 >>>>>>> 7658a3e (add images to project posts)
+```
