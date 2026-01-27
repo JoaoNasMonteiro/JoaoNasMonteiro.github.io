@@ -56,7 +56,7 @@ The device logic is based on a Finite State Machine controlled via physical butt
 | **🛠️ Development** | Disengages the honeypot/IDS and allows direct legitimate SSH connections for maintenance. |
 
 
-![Operational Modes of the Orange Sentry]('/assets/images/Orange-Pi-Orange PI Working Modes.drawio.png')
+![Orange Pi Working Modes](/assets/images/Orange-Pi-OrangePIWorkingModes.drawio.png)
 
 ## Engineering Challenges
 I chose not to reinvent the wheel with the detection engines (Cowrie/Suricata), but I am building the infrastructure from scratch to solve specific engineering hurdles:
