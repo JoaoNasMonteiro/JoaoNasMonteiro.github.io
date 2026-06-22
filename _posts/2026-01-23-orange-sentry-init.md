@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Devlog: Orange Sentry Init"
-date: 2026-06-22 10:00:00 -0300
+date: 2026-01-22 10:00:00 -0300
 project: iot-honeypot
 ---
 
@@ -109,7 +109,7 @@ Also I have already started to save money to buy the physical components I sill 
 
 ## Conclusion
 
-I am very hopeful for the future of this project. I think it has great potential of not only teaching me to be a better Security Practitioner and Computer Engineer(ing Student), but also may help some like-minded people with their own projects. 
+I am very hopeful for the future of this project. I think it has great potential of not only teaching me to be a better Security Practitioner and Computer Engineer(ing Student), but also may help some like-minded people with their own projects.
 
 Man, I Love Computers!
 
