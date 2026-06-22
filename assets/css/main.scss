@@ -33,10 +33,15 @@ $card-bg:        lighten($srcery-black, 4%);
 body {
   background-color: $bg-main;
   color: $text-main;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Fira Sans', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.7;
+}
+
+code, pre, kbd, samp {
+  font-family: 'Fira Code', monospace;
+  font-variant-ligatures: contextual;
 }
 
 a {
