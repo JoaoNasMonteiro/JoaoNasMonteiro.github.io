@@ -5,7 +5,7 @@ permalink: /projects/
 ---
 
 <div class="projects-hub">
-  <h1>Projects</h1>
+  <h1>:Buffer projects</h1>
 
   <div class="project-grid">
     {% for project in site.projects %}

@@ -5,7 +5,7 @@ permalink: /articles/
 ---
 
 <div class="articles-showroom">
-  <h1>Deep Dives & Articles</h1>
+  <h1>:Buffer articles</h1>
   <p class="showroom-description">Leituras aprofundadas, análises de arquitetura de software e investigações de segurança.</p>
 
   <ul class="simple-article-list">
