@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%d/%m/%Y" }}
+      </time>
+    </p>
+
+    {% if page.project %}
+      {% assign project = site.projects | where: "slug", page.project | first %}
+      {% if project %}
+        <div class="project-relation-badge">
+          <i class="fa-solid fa-folder-open"></i> Related Project:
+          <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

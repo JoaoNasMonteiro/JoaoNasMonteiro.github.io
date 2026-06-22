@@ -1,0 +1,274 @@
+---
+---
+// ==========================================================================
+// 1. PALETA BASE (SRCERY) - A Fonte da Verdade
+// Não use essas variáveis diretamente nas classes HTML.
+// ==========================================================================
+$srcery-black:   #121110;
+$srcery-red:     #EF2F27;
+$srcery-green:   #519F50;
+$srcery-yellow:  #FBB829;
+$srcery-blue:    #2C78BF;
+$srcery-magenta: #E02C6D;
+$srcery-cyan:    #0AAEB3;
+$srcery-white:   #C5B088;
+
+// ==========================================================================
+// 2. VARIÁVEIS SEMÂNTICAS - O Mapa de Aplicação
+// Altere aqui para mudar o tema inteiro do site instantaneamente.
+// ==========================================================================
+$bg-main:        $srcery-black;
+$text-main:      $srcery-white;
+$title-color:    $srcery-yellow;
+$link-color:     $srcery-blue;
+$link-hover:     $srcery-cyan;
+
+$border-color:   rgba($srcery-white, 0.15);
+$text-muted:     rgba($srcery-white, 0.6);
+$card-bg:        lighten($srcery-black, 4%);
+
+// ==========================================================================
+// 3. ESTILOS GLOBAIS (Base)
+// ==========================================================================
+body {
+  background-color: $bg-main;
+  color: $text-main;
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out, color 0.2s;
+
+  &:hover {
+    color: $link-hover;
+    text-decoration: underline;
+  }
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// ==========================================================================
+// 4. HEADER (Navegação Global)
+// ==========================================================================
+.site-header {
+  border-bottom: 1px solid $border-color;
+  padding: 30px 0;
+  margin-bottom: 50px;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $title-color;
+    &:hover { text-decoration: none; opacity: 0.8; }
+  }
+
+  .site-nav a {
+    font-size: 1.1rem;
+    color: $link-color;
+    margin-left: 20px;
+  }
+}
+
+// ==========================================================================
+// 5. LAYOUT ESTRUTURAL (Reutilizável)
+// ==========================================================================
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ==========================================================================
+// 6. COMPONENTES: Sidebar
+// ==========================================================================
+.sidebar-posts {
+  padding-left: 30px;
+  border-left: 1px solid $border-color;
+
+  h2 {
+    font-size: 1.3rem;
+    color: $title-color;
+    margin-top: 0;
+    border-bottom: 1px dashed $border-color;
+    padding-bottom: 10px;
+  }
+
+  .sidebar-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .sidebar-post-date {
+    font-size: 0.85rem;
+    color: $text-muted;
+    margin-bottom: 2px;
+  }
+
+  .empty-state {
+    color: $text-muted;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+}
+
+// ==========================================================================
+// 7. COMPONENTES: Projetos (Showroom e Cover Letter)
+// ==========================================================================
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background-color: $card-bg;
+  border-radius: 8px;
+  padding: 25px;
+  border: 1px solid $border-color;
+
+  .project-card-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    a { color: $title-color; }
+  }
+
+  .project-excerpt {
+    color: $text-main;
+    margin-bottom: 20px;
+  }
+}
+
+.project-header {
+  margin-bottom: 30px;
+
+  .project-title {
+    color: $title-color;
+    margin-bottom: 5px;
+  }
+}
+
+.status-badge {
+  color: $srcery-red;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-left: 10px;
+  text-transform: uppercase;
+  border: 1px solid $srcery-red;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  .tech-tag {
+    background-color: $srcery-black;
+    color: $srcery-cyan;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    border: 1px solid rgba($srcery-cyan, 0.2);
+  }
+}
+
+// ==========================================================================
+// 8. COMPONENTES: Articles (Leituras Longas e Lista Simples)
+// ==========================================================================
+
+// Layout focado e centralizado (Sem Sidebar)
+.long-form-article {
+  max-width: 750px; // Regra de legibilidade: evita fadiga ocular em textos longos
+  margin: 0 auto;   // Centraliza o bloco na tela
+  padding-bottom: 60px;
+
+  .article-title {
+    font-size: 2.3rem;
+    color: $title-color;
+    margin-bottom: 10px;
+  }
+
+  .article-meta {
+    font-size: 0.9rem;
+    color: $text-muted;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+  }
+
+  // Melhora a legibilidade do texto corrido dentro do artigo
+  .article-content {
+    font-size: 1.05rem;
+
+    p {
+      margin-bottom: 25px;
+    }
+
+    h2, h3 {
+      color: $title-color;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// Showroom em estilo lista limpa
+.simple-article-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+
+  .article-list-item {
+    display: flex;
+    align-items: baseline;
+    padding: 15px 0;
+    border-bottom: 1px dashed $border-color;
+
+    // Ajuste para telas pequenas (celulares)
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+  .article-item-date {
+    width: 150px;
+    font-size: 0.9rem;
+    color: $text-muted;
+    flex-shrink: 0; // Garante que a data não esmague em telas médias
+  }
+
+  .article-item-link {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $link-color;
+  }
+}

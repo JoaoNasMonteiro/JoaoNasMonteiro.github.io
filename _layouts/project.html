@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<div class="two-column-layout">
+
+  <article class="project-cover-letter">
+    <header class="project-header">
+      <h1 class="project-title">{{ page.title }}</h1>
+      {% if page.status %}
+        <span class="status-badge {{ page.status | slugify }}">{{ page.status }}</span>
+      {% endif %}
+    </header>
+
+    <div class="project-content">
+      {{ content }}
+    </div>
+  </article>
+
+  <aside class="sidebar-posts">
+    <h2>Related Logs</h2>
+
+    {% assign updates = site.posts | where: "project", page.slug %}
+    {% if updates.size > 0 %}
+      <ul class="sidebar-list">
+        {% for post in updates %}
+          <li>
+            <span class="sidebar-post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty-state">No specific logs linked to this project yet.</p>
+    {% endif %}
+  </aside>
+
+</div>

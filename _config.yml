@@ -1,0 +1,32 @@
+title: Buffer Afterthought
+author: Joao Pedro Nascimento Monteiro
+email: joaonasmont@gmail.com
+description: >-
+  A technical devlog covering systems, engineering, security, and IoT.
+
+url: "https://joaonasmonteiro.github.io"
+baseurl: ""
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:slug/
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:slug/
+  articles:
+    output: true
+    permalink: /articles/:slug/
+
+permalink: /blog/:title/
