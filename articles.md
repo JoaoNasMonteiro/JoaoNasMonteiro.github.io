@@ -1,6 +1,6 @@
 ---
 layout: default
-title: :Buffer Articles
+title: Articles
 permalink: /articles/
 ---
 

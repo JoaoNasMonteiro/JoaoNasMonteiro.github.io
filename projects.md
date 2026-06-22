@@ -1,6 +1,6 @@
 ---
 layout: default
-title: :Buffer Projects
+title: Projects
 permalink: /projects/
 ---
 
