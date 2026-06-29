@@ -12,11 +12,11 @@ This website serves as a place for me to turn my many WIPs, yaps and tech advent
 
 Here you will find:
 
-    DevLogs: a more detailed and unpolished account of the process.
+DevLogs: a more detailed and unpolished account of the process.
 
-    Deep Dives: longer pieces about linux internals, malware samples or other general topics that I find interesting (may or may not contain copious amounts of rambling).
+Deep Dives: longer pieces about linux internals, malware samples or other general topics that I find interesting (may or may not contain copious amounts of rambling).
 
-    project Briefings: briefs about the general workings of some of my (seemingly eternally unfinished) projects.
+Project Briefings: briefs about the general workings of some of my (seemingly eternally unfinished) projects.
 
 But this is also a tool for me. I firmly believe in learning by doing, and for someone that struggles to finish projects, the accountability is nice.
 
