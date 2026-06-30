@@ -1,38 +1,54 @@
 ---
 layout: default
 ---
- 
-<div class="two-column-layout">
 
-  <article class="project-cover-letter">
-    <header class="project-header">
-      <h1 class="project-title">{{ page.title }}</h1>
-      {% if page.status %}
-        <span class="status-badge {{ page.status | slugify }}">{{ page.status }}</span>
-      {% endif %}
+<div class="project-content-wrapper">
+  <article class="long-form-article">
+
+    <header class="project-header" style="margin-bottom: 40px;">
+      <h1 class="article-title" style="margin-top: 0; margin-bottom: 12px;">{{ page.title }}</h1>
+
+      <div class="project-meta-row" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+        {% if page.status %}
+          <span class="project-badge" style="display: inline-block; padding: 4px 8px; background: rgba(239, 47, 39, 0.1); border: 1px solid #EF2F27; color: #EF2F27; font-family: 'Fira Code', monospace; font-size: 0.75rem; border-radius: 4px; text-transform: uppercase;">
+            {{ page.status }}
+          </span>
+        {% endif %}
+
+        <a href="#related-logs-section" class="scroll-to-logs-btn" style="font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #519F50; text-decoration: none;">
+          [click to see related posts ↓]
+        </a>
+      </div>
     </header>
 
-    <div class="project-content">
+    <section class="article-content">
       {{ content }}
-    </div>
-  </article>
+    </section>
 
-  <aside class="sidebar-posts">
-    <h2>Related Logs</h2>
+    <hr class="section-divider">
 
-    {% assign updates = site.posts | where: "project", page.slug %}
-    {% if updates.size > 0 %}
-      <ul class="sidebar-list">
-        {% for post in updates %}
-          <li>
-            <span class="sidebar-post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </li>
+    <footer class="related-logs-footer" id="related-logs-section" style="scroll-margin-top: 40px;">
+      <h3>Related Logs & Sprints</h3>
+      <ul class="related-logs-grid">
+        {% assign has_related = false %}
+        {% for post in site.posts %}
+
+          {% if post.project and post.project == page.slug %}
+            {% assign has_related = true %}
+            <li class="related-log-card">
+              <span class="log-date">{{ post.date | date: "%b %d, %Y" }}</span>
+              <a href="{{ post.url | relative_url }}" class="log-link">{{ post.title }}</a>
+            </li>
+          {% endif %}
+
         {% endfor %}
-      </ul>
-    {% else %}
-      <p class="empty-state">No specific logs linked to this project yet.</p>
-    {% endif %}
-  </aside>
 
+        {% if has_related == false %}
+          <li style="color: var(--text-muted, #C5B088); font-family: 'Fira Code', monospace; font-size: 0.9rem; list-style: none; opacity: 0.6;">
+            No logs linked to this project yet. Stay tuned!
+          </li>
+        {% endif %}
+      </ul>    </footer>
+
+  </article>
 </div>

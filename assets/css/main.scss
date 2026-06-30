@@ -13,12 +13,14 @@ $srcery-magenta: #E02C6D;
 $srcery-cyan:    #0AAEB3;
 $srcery-white:   #C5B088;
 
+
+$srcery-bright-white:   #FCE8C3;
 // ==========================================================================
 // 2. VARIÁVEIS SEMÂNTICAS - O Mapa de Aplicação
 // Altere aqui para mudar o tema inteiro do site instantaneamente.
 // ==========================================================================
 $bg-main:        $srcery-black;
-$text-main:      $srcery-white;
+$text-main:      $srcery-bright-white;
 $title-color:    $srcery-yellow;
 $link-color:     $srcery-blue;
 $link-hover:     $srcery-cyan;
@@ -56,7 +58,7 @@ a {
 }
 
 .wrapper {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -142,6 +144,87 @@ a {
 }
 
 // ==========================================================================
+// ESCOPO EXCLUSIVO DE PROJETOS (Não afeta a Landing Page nem os Hubs Globais)
+// ==========================================================================
+
+// Aplicamos as mudanças apenas quando o artigo estiver dentro de uma página de projeto
+.project-content-wrapper {
+
+  .long-form-article {
+    max-width: 880px; // A largura expandida para o texto e diagramas respirarem
+    margin: 0 auto;
+    padding: 0 20px 60px 20px;
+
+    // Força qualquer elemento de mídia a respeitar o fluxo vertical de 100% da coluna
+    img, svg, iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 35px auto;
+      border-radius: 6px;
+    }
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid rgba(197, 176, 136, 0.15);
+    margin: 50px 0 30px 0;
+  }
+
+  // O novo rodapé de logs relacionados isolado aqui dentro
+  .related-logs-footer {
+    margin-top: 40px;
+
+    h3 {
+      color: $title-color;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .related-logs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .related-log-card {
+      background-color: rgba(252, 229, 180, 0.02);
+      border: 1px solid rgba(197, 176, 136, 0.15);
+      border-radius: 6px;
+      padding: 15px;
+      transition: border-color 0.2s, background-color 0.2s;
+
+      &:hover {
+        border-color: #519F50;
+        background-color: rgba(81, 159, 80, 0.02);
+      }
+
+      .log-date {
+        display: block;
+        font-size: 0.8rem;
+        color: $text-muted;
+        margin-bottom: 8px;
+        font-family: 'Fira Code', monospace;
+      }
+
+      .log-link {
+        color: $link-color;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 0.95rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// ==========================================================================
 // 7. COMPONENTES: Projetos (Showroom e Cover Letter)
 // ==========================================================================
 .project-grid {
@@ -209,11 +292,11 @@ a {
 // 8. COMPONENTES: Articles (Leituras Longas e Lista Simples)
 // ==========================================================================
 
-// Layout focado e centralizado (Sem Sidebar)
+// Layout focado e centralizado (Artigos Longos)
 .long-form-article {
-  max-width: 750px; // Regra de legibilidade: evita fadiga ocular em textos longos
-  margin: 0 auto;   // Centraliza o bloco na tela
-  padding-bottom: 60px;
+  max-width: 880px; // Largura expandida: balanço ideal entre aproveitamento de tela e legibilidade
+  margin: 0 auto;
+  padding: 0 20px 60px 20px; // Adiciona um padding de segurança para telas de notebook/tablets
 
   .article-title {
     font-size: 2.3rem;
@@ -229,12 +312,19 @@ a {
     margin-bottom: 40px;
   }
 
-  // Melhora a legibilidade do texto corrido dentro do artigo
+  // Engenharia Tipográfica Estilo LaTeX
   .article-content {
     font-size: 1.05rem;
 
     p {
       margin-bottom: 25px;
+      text-align: justify;       // Justifica o texto
+      text-justify: inter-word;  // Distribui o espaço estritamente entre as palavras
+
+      // Motor de Hifenização Nativa (O segredo do visual LaTeX)
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
     }
 
     h2, h3 {
@@ -275,5 +365,78 @@ a {
     font-size: 1.2rem;
     font-weight: 700;
     color: $link-color;
+  }
+}
+
+// Estilização Global de Tabelas (Alinhada ao Srcery)
+// Estilização Global de Tabelas (Versão Compacta Srcery)
+// Estilização Global de Tabelas (Inspirada no Neovim/Srcery Retrô)
+table {
+  width: 100%;
+  border-collapse: separate; // Necessário para aceitar border-radius
+  border-spacing: 0;
+  margin: 25px 0;
+  font-family: 'Fira Code', monospace; // Usando Fira Code para dados baterem com o terminal
+  font-size: 0.9rem;
+  border: 1px solid #FCE5B4; // Outline creme/branco quente do Neovim
+  border-radius: 8px;
+  overflow: hidden;
+
+  th, td {
+    padding: 6px 14px;
+    text-align: left;
+    // Bordas verticais internas idênticas às do seu painel do nvim
+    border-right: 1px solid rgba(252, 229, 180, 0.2);
+
+    &:last-child {
+      border-right: none; // Remove a borda direita na última coluna
+    }
+  }
+
+  th {
+    background-color: transparent;
+    color: #FCE5B4; // Verde clássico e quente do Srcery para o Header
+    font-weight: 700;
+    text-transform: none; // Mantém minúsculas/maiúsculas como você digitou
+    font-size: 0.95rem;
+    border-bottom: 1px solid #FCE5B4; // Linha verde dividindo o header
+  }
+
+  // Linhas de dados com borda inferior sutil
+  tbody tr td {
+    border-bottom: 1px solid rgba(252, 229, 180, 0.1);
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none; // Evita borda dupla na última linha
+  }
+
+  // Linhas Zebradas: Tons quentes e extremamente discretos para ajudar a leitura
+  tbody tr:nth-of-type(even) {
+    background-color: rgba(252, 229, 180, 0.02);
+  }
+
+  // Efeito hover sutil ao passar o mouse
+  tbody tr:hover {
+    background-color: rgba(81, 159, 80, 0.05); // Leve brilho verde do tema
+  }
+}
+
+blockquote {
+  margin: 25px 0;
+  padding: 12px 20px;
+  background-color: rgba(239, 47, 39, 0.04);
+  border-left: 4px solid #EF2F27;
+  border-radius: 0 6px 6px 0;
+  color: $text-main;
+  font-family: 'Fira Sans', sans-serif;
+
+  p {
+    margin: 0 0 12px 0; // Margem padrão controlada
+
+    // Zera completamente a margem do ÚLTIMO parágrafo ou se ele for ÚNICO
+    &:last-child, &:last-of-type {
+      margin-bottom: 0 !important;
+    }
   }
 }
