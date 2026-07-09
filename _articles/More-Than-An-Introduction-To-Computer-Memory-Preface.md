@@ -11,7 +11,7 @@ Over the course of five chapters (or nine, depending on how you count it), we ar
 
 ## A preface
 
-Ever since I've gotten into technology I've been in love with games. My second ever program, at around 15 years old, after the "hello' world", was a little space invaders clone made in python using pygame and some youtube tutorial that I've since forgotten. After that I've tried (unsuccessfully) to make games in platforms such as Unreal Engine and Godot.
+Ever since I've gotten into technology I've been in love with games. My second ever program, at around 15 years old, after the "hello, world", was a little space invaders clone made in python using pygame and some youtube tutorial that I've since forgotten. After that I've tried (unsuccessfully) to make games in platforms such as Unreal Engine and Godot.
 
 I've always liked playing games as well, my godfather bought me an XBOX 360 for my 11th birthday, and I've put countless hours into skyrim (it even helped me to learn English!) and Rayman Origins, but as far as PC games went, I've had access to a computer very late in life, only at about 14 or so (and by that time most of my friends were into CS Go). It was a crappy HP laptop that struggled to run League at 30 FPS, so First Person Shooters were out of the question, and 3D games were heavily limited.
 
