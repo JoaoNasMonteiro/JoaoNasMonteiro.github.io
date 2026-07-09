@@ -8,16 +8,17 @@ layout: default
     {{ content }}
   </section>
 
-  <aside class="sidebar-posts">
-    <h2>Recent Posts</h2>
+<aside class="sidebar-posts">
+    <h2>Recent Activity</h2>
     <ul class="sidebar-list">
-      {% for post in site.posts limit: 5 %}
+      {% assign recent_entries = site.posts | concat: site.articles | sort: "date" | reverse %}
+
+      {% for entry in recent_entries limit: 5 %}
         <li>
-          <span class="sidebar-post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="sidebar-post-date">{{ entry.date | date: "%b %d, %Y" }}</span>
+          <a href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
         </li>
       {% endfor %}
     </ul>
   </aside>
-
 </div>

@@ -41,11 +41,15 @@ body {
   line-height: 1.7;
 }
 
-code, pre, kbd, samp {
+pre, kbd, samp {
   font-family: 'Fira Code', monospace;
   font-variant-ligatures: contextual;
 }
 
+code {
+  font-family: 'Fira Code', monospace;
+  font-variant-ligatures: none;
+}
 a {
   color: $link-color;
   text-decoration: none;
@@ -58,7 +62,7 @@ a {
 }
 
 .wrapper {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
 }
