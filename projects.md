@@ -39,7 +39,7 @@ permalink: /projects/
   <hr class="section-divider" style="margin: 60px 0 40px 0; border: none; border-top: 1px dashed rgba(197, 176, 136, 0.2);">
 
   <!-- SEÇÃO 2: Backlog -->
-  <h2 style="color: #C5B088; font-family: 'Fira Code', monospace; font-size: 1.5rem; margin-bottom: 20px;">:Backlog</h2>
+  <h2 style="color: #C5B088; font-family: 'Fira Code', monospace; font-size: 1.5rem; margin-bottom: 20px;">:backlog</h2>
 
   <div class="project-grid" style="opacity: 0.6; filter: grayscale(20%);">
     {% for project in site.projects %}
