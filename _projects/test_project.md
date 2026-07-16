@@ -2,7 +2,7 @@
 layout: project
 title: "Orange Sentry Test Environment"
 slug: sentry-test
-status: "ALPHA"
+status: "backlog"
 tags: [Rust, Sandbox, Linux Security]
 ---
 
