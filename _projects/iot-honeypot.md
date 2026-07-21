@@ -6,7 +6,6 @@ status: "Pre-Alpha"
 tags: [C, Python, MQTT, Embedded Linux, cybersecurity]
 ---
 
-
 > **Status:** Pre-Alpha | Milestone 0
 
 Welcome to the home of the **Orange Sentry** project!
