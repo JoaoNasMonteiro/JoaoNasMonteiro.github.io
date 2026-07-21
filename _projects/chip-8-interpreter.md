@@ -58,7 +58,7 @@ My little program, a lot like something like an API webserver, is a program that
 
 Of course there are differences: the API webserver will use dynamic memory allocation and multithreading, will recieve it's commands through the network stack rather than through reading from a file, and will have to return a response to the requestee, but those differences end up being helpful simplifications that don't change the underlying threat model as much as you would think.
 
-![chip8 intepreter threat model vs API webserver threat model](/assets/blog/chip8/chip8-threat-models.jpg)
+![chip8 intepreter threat model vs API webserver threat model](/assets/blog/chip8/chip8-threat-models.png)
 
 The Chip-8 interpreter is also very easily fuzzed, as it has one very big input file that may contain arbitrary user defined intructions for our machine to run.
 
