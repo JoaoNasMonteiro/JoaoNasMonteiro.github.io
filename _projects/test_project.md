@@ -1,12 +1,14 @@
 ---
 layout: project
-title: ""
-slug: sentry-test
-status: "backlog"
-tags: [Rust, Sandbox, Linux Security]
+title: "Chip-8 Interpreter and Fuzzing"
+slug: chip-8
+status: "Active - v1"
+tags: [C, Fuzzing, Cybersecurity]
+brief: "A short study into emulator development, why static analysis tools are insuficcient and fuzzing basics"
 ---
 
-# blog emulator project page
+
+> **Status:** Active - v1.0
 
 This project is an attempt to write an interpreter for the Chip-8 programming language based on Cowgod's technical reference.
 
