@@ -40,7 +40,6 @@ I also wanted to add my little cybersecurity spin on it (as one does), and decid
 
 In the end this turned out to be an exercise in why static analysis tools are not enough, and why good security practices and dynamic security analysis is pretty much always needed. With a touch of learning about more tools like GDB and libFuzzer (a Clang/LLVM builtin).
 
->!static analysis as good for saying "this is dangerous", but not good fot saying "this is safe", basically they have very high precision (low rate of false positves, most of the code it flags is actually bad), but very low recall (high rate of false negatives - low sensitivity -, out of all the bad code it comes across it only flags a small percentage of it, it misses a lot)
 
 The interpreter basically operates the fetch-decode-execute loop of a CPU. It reads the two bytes pointed by the PC, interpret them as instructions, decodes them into one of the standard Chip-8 set and finally executes the instruction according to the arguments passed, advancing the PC by two bytes.
 
