@@ -2,7 +2,7 @@
 layout: project
 title: "Orange Sentry IoT Honeypot"
 slug: iot-honeypot
-status: "Pre-Alpha"
+status: "Hiatus - Pre-Alpha"
 tags: [C, Python, MQTT, Embedded Linux, cybersecurity]
 ---
 
