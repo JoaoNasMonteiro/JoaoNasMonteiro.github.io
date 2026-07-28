@@ -58,7 +58,7 @@ Of course there are differences: the API webserver will use dynamic memory alloc
 
 ![chip8 intepreter threat model vs API webserver threat model](/assets/blog/chip8/chip8-threat-models-resize.png)
 
-The Chip-8 interpreter is also very easily fuzzed, as it has one very big input file that may contain arbitrary user defined intructions for our machine to run.
+The Chip-8 interpreter is also very easily fuzzed, as it has one very big input file that may contain arbitrary user defined instructions for our machine to run.
 
 And because we will be focusing on the security of the interpreter and not of the programs it runs, we basically don't need to think about what the ROM does inside of it's own trust boundary, but rather when it can (a) crash our program or most dangerously (b) somehow convice our interpreter to make unwanted changes outside of it's own trust boundary, such as running a command in the OS.
 
