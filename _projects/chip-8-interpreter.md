@@ -54,6 +54,7 @@ But it also was a great opportunity, as I think a project like this has many sim
 
 My little program, a lot like something like an API webserver, is a program that owns some large region or memory, interprets arbitrary user-defined data as commands, performs operations based on these commands, may or may not modify the memory it owns, may or may not interact with some external function like hardware or another service and terminates.
 
+
 Of course there are differences: the API webserver will use dynamic memory allocation and multithreading, will receive it's commands through the network stack rather than through reading from a file, and will have to return a response to the requestee, but those differences end up being helpful simplifications that don't change the underlying threat model as much as you would think.
 
 ![chip8 intepreter threat model vs API webserver threat model](/assets/blog/chip8/chip8-threat-models-resize.png)
