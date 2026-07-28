@@ -7,7 +7,6 @@ tags: [C, Fuzzing, Cybersecurity, Emulators]
 brief: "A short study into emulator development, why static analysis tools are insuficcient and fuzzing basics"
 ---
 
-
 > **Status:** Active - v1.0
 
 This project is an attempt to write an interpreter for the Chip-8 programming language based on Cowgod's technical reference.
@@ -69,8 +68,8 @@ I also want to try to write some sort of exploit to exploit a vulnerability in m
 
 ## Roadmap
 - [x] Create the baseline unsafe program
-- [ ] Document it's flaws by reading code, performing static analysis and fuzzing
-- [ ] Write explots for the flaws
+- [x] Document it's flaws by reading code, performing static analysis and fuzzing
+- [ ] Write exploits for the flaws
 - [ ] Create a fixed version
 - [ ] Perform the same analysis techniques to validate the correction of the flaws
 
